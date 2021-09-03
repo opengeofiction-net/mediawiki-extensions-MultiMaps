@@ -152,7 +152,7 @@ ogf.map = function( leafletMap, options ){
         'Coastline Errors': './CoastlineErrors.js',
         'Territories':      './Territories.js',
     };
-    var baseMapsEnabled = options.layers   || [ 'Standard', 'TopoMap', 'Histor' ];
+    var baseMapsEnabled = options.layers   || [ 'Standard', 'TopoMap' ];
     var overlaysEnabled = options.overlays || [];
 
     if( ! Array.isArray(baseMapsEnabled) )  baseMapsEnabled = baseMapsEnabled.split(/,/);
