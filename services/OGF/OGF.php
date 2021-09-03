@@ -35,7 +35,7 @@ class OGF extends BaseMapService {
 		$this->setLayerByKey( $layerKey );
 
 		$leafletPath = $egMultiMapsScriptPath . '/services/Leaflet/leaflet';
-		$leafletPath = $egMultiMapsScriptPath . '/services/OGF';
+		$ogfPath = $egMultiMapsScriptPath . '/services/OGF';
 		$this->headerItem .= Html::linkedStyle( "$leafletPath/leaflet.css" ) .
 			'<!--[if lte IE 8]>' . Html::linkedStyle( "$leafletPath/leaflet.ie.css" ) . '<![endif]-->' .
 			Html::linkedScript( "$leafletPath/leaflet.js" ) . 
