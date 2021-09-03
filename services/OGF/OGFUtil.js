@@ -8,7 +8,7 @@ var ogf = {
         WIKI_URL:       '//wiki.opengeofiction.net/',
         NOMINATIM_URL:  'http://nominatim.opengeofiction.net:8080/',
         ROUTING_URL:    'http://route.opengeofiction.net:5000/',
-        TERRITORY_URL:  '//tile.opengeofiction.net/wiki/index.php/OGF:Territory_administration?action=raw',
+        TERRITORY_URL:  '//wiki.opengeofiction.net/wiki/index.php/OGF:Territory_administration?action=raw',
         OVERPASS_URL:   '//osm3s.opengeofiction.net/api/interpreter',
     },
     icons: { red: null, yellow: null, green: null, blue: null },
@@ -22,29 +22,16 @@ var ogf = {
 ogf.baseMapsAvailable = {
     Standard: {
         ogf_shortcut: 'C',
-        tileUrl: ogf.config.TILES_URL +'/osmcarto/{z}/{x}/{y}.png',
+        tileUrl: ogf.config.TILES_URL +'/ogf-carto/{z}/{x}/{y}.png',
         maxZoom: 19,
         attribution: ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa,
     },
     TopoMap: {
         ogf_shortcut: 'T',
-        tileUrl: ogf.config.TILES_URL +'/topomap/{z}/{x}/{y}.png',
+        tileUrl: ogf.config.TILES_URL +'/ogf-topo/{z}/{x}/{y}.png',
         maxZoom: 17,
         attribution: 'map data: ' + ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa +
             ' | map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> ' + ogf.linkText.cc_by_sa,
-    },
-    Histor: {
-        ogf_shortcut: 'H',
-        tileUrl: ogf.config.TILES_URL +'/tiles-histor/{z}/{x}/{y}.png',
-        maxZoom: 18,
-        attribution: 'map data: ' + ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa +
-            ' | map style: &copy; <a href="//opengeofiction.net/user/histor">histor</a> - <a href="//wiki.opengeofiction.net/wiki/index.php/OGF:Histor-style">more info</a>',
-    },
-    Roantra: {
-        ogf_shortcut: 'R',
-        tileUrl: ogf.config.TILES_URL +'/planet/Roantra/{z}/{x}/{y}.png',
-        maxZoom: 14,
-        attribution: 'Copyright &copy; Thilo Stapff 2014',
     },
     OpenStreetMap: {
         ogf_shortcut: 'OSM',
@@ -58,12 +45,6 @@ ogf.baseMapsAvailable = {
         maxZoom: 17,
         attribution: 'map data: ' + ogf.linkText.osmCopy + ', <a href="http://viewfinderpanoramas.org/">SRTM</a>' +
             ' | map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> ' + ogf.linkText.cc_by_sa,
-    },
-    ReliefMap: {
-        ogf_shortcut: 'RM',
-        tileUrl: 'https://maps-for-free.com/layer/relief/z{z}/row{y}/{z}_{x}-{y}.jpg',
-        maxZoom: 11,
-        attribution: 'map : &copy; <a href="https://maps-for-free.com">https://maps-for-free.com</a>',
     },
     None: {
         ogf_shortcut: 'N',
