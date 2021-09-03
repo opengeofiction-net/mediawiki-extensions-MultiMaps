@@ -7,7 +7,7 @@
  */
 
 /* global L */
-mediaWiki.MultiMapsLeaflet = {
+mediaWiki.MultiMapsOGF = {
 	/**
 	 * Convert properties given from multimaps extension to options of map element
 	 *
@@ -147,18 +147,36 @@ mediaWiki.MultiMapsLeaflet = {
 
 	setup: function ( element, options ) {
 		var map, i, mapOptions = {};
-        var initLayer = 'Standard';
+		var OGF = OGFUtil(), ogfMap, ogfOptions = {};
 
-		//if ( options.minzoom !== false ) {
-		//	mapOptions.minZoom = options.minzoom;
-		//}
+//		if (options.minzoom !== false) {
+//			mapOptions.minZoom = options.minzoom;
+//		}
+//		if (options.maxzoom !== false) {
+//			mapOptions.maxZoom = options.maxzoom;
+//		}
+        if (options.layers) {
+            ogfOptions.layers = options.layers;
+        }
+        if (options.layer) {
+            ogfOptions.layer = options.layer;
+        }
+        if (options.overlays) {
+            ogfOptions.overlays = options.overlays;
+        }
+        if (options.overlaydef) {
+            ogfOptions.overlaydef = options.overlaydef;
+        }
+        if (options.mapdata) {
+            ogfOptions.mapdata = options.mapdata;
+        }
+
+		if ( options.minzoom !== false ) {
+			mapOptions.minZoom = options.minzoom;
+		}
 		if ( options.maxzoom !== false ) {
 			mapOptions.maxZoom = options.maxzoom;
 		}
-        if (options.layer) {
-            initLayer = options.layer;
-            console.log( "initLayer <" + initLayer + ">" );  // _DEBUG_
-        }
 
 		map = L.map( element, mapOptions )
 			.fitWorld();
@@ -168,16 +186,8 @@ mediaWiki.MultiMapsLeaflet = {
 		//	attribution: options.attribution
 		//} )
 		//	.addTo( map );
-        var TILESERVER_URL = 'https://tile.opengeofiction.net';
-        var baseMaps = {
-            Standard: 'osm-carto',
-            TopoMap:  'osm-topo',
-        };
-        for( var key in baseMaps ){
-            baseMaps[key] = L.tileLayer( TILESERVER_URL +'/'+ baseMaps[key] + '/{z}/{x}/{y}.png' );
-        }
-        L.control.layers( baseMaps ).addTo( map );
-        baseMaps[initLayer].addTo( map );
+		var ogfMap = OGF.map( map, ogfOptions );
+        OGF.addFullscreenControl( ogfMap, {iconUrl: '/extensions/MultiMaps/services/OGF/if_fullscreen_326650.svg'} );
 
 		// Add the markers.
 		if ( options.markers !== undefined ) {
@@ -234,9 +244,9 @@ mediaWiki.MultiMapsLeaflet = {
 
 	$( function () {
 		mw.loader.using( 'ext.MultiMaps', function () {
-			$( '.multimaps-map-leaflet' ).each( function () {
+			$( '.multimaps-map-ogf' ).each( function () {
 				var $this = $( this );
-				mw.MultiMapsLeaflet.setup( $this.get( 0 ), JSON.parse( $this.find( 'div' ).text() ) );
+				mw.MultiMapsOGF.setup( $this.get( 0 ), JSON.parse( $this.find( 'div' ).text() ) );
 			} );
 		} );
 	} );

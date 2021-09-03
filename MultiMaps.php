@@ -73,6 +73,14 @@ $wgResourceModules['ext.MultiMaps'] = [
 	'remoteExtPath' => 'MultiMaps/resources',
 ];
 
+// OGF service
+$wgAutoloadClasses["MultiMaps\OGF"] = $dir . '/services/OGF/OGF.php';
+$wgResourceModules['ext.MultiMaps.OGF'] = [
+	'scripts' => [ 'ext.ogf.js' ],
+	'localBasePath' => $dir . '/services/OGF',
+	'remoteExtPath' => 'MultiMaps/services/OGF',
+];
+
 // Leaflet service
 $wgAutoloadClasses["MultiMaps\Leaflet"] = $dir . '/services/Leaflet/Leaflet.php';
 $wgResourceModules['ext.MultiMaps.Leaflet'] = [

@@ -147,37 +147,22 @@ mediaWiki.MultiMapsLeaflet = {
 
 	setup: function ( element, options ) {
 		var map, i, mapOptions = {};
-        var initLayer = 'Standard';
 
-		//if ( options.minzoom !== false ) {
-		//	mapOptions.minZoom = options.minzoom;
-		//}
+		if ( options.minzoom !== false ) {
+			mapOptions.minZoom = options.minzoom;
+		}
 		if ( options.maxzoom !== false ) {
 			mapOptions.maxZoom = options.maxzoom;
 		}
-        if (options.layer) {
-            initLayer = options.layer;
-            console.log( "initLayer <" + initLayer + ">" );  // _DEBUG_
-        }
 
 		map = L.map( element, mapOptions )
 			.fitWorld();
 
 		// add a tile layer
-		//L.tileLayer( options.tileLayer, {
-		//	attribution: options.attribution
-		//} )
-		//	.addTo( map );
-        var TILESERVER_URL = 'https://tile.opengeofiction.net';
-        var baseMaps = {
-            Standard: 'osm-carto',
-            TopoMap:  'osm-topo',
-        };
-        for( var key in baseMaps ){
-            baseMaps[key] = L.tileLayer( TILESERVER_URL +'/'+ baseMaps[key] + '/{z}/{x}/{y}.png' );
-        }
-        L.control.layers( baseMaps ).addTo( map );
-        baseMaps[initLayer].addTo( map );
+		L.tileLayer( options.tileLayer, {
+			attribution: options.attribution
+		} )
+			.addTo( map );
 
 		// Add the markers.
 		if ( options.markers !== undefined ) {

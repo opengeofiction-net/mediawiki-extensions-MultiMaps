@@ -140,6 +140,11 @@ abstract class BaseMapService {
 		'fillcolor',
 		'fillopacity',
 		'fill',
+		'layer',
+		'layers',
+		'overlays',
+		'overlaydef',
+		'mapdata',
 	];
 
 	/**
