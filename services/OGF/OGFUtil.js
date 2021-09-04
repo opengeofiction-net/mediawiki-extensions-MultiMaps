@@ -3,7 +3,7 @@ function OGFUtil(){
 var ogf = {
     config: {
         API_URL:        '//opengeofiction.net/',
-        TILES_URL:      '//tile.opengeofiction.net/',
+        TILES_URL:      '//wiki.opengeofiction.net/',
         TILESERVER_URL: '//tile.opengeofiction.net/',
         WIKI_URL:       '//wiki.opengeofiction.net/',
         NOMINATIM_URL:  'http://nominatim.opengeofiction.net:8080/',
