@@ -110,7 +110,7 @@ abstract class BaseMapElement {
 			}
 			$options = \ParserOptions::newFromAnon();
 			#$this->properties[$name] = $parser->parse( $value, $title, $options )->getText( [ 'unwrap' => true ] );
-			$this->properties[$name] = $name; // workaround Fatal exception of type MWException Error
+			$this->properties[$name] = $value; // workaround Fatal exception of type MWException Error
 		} elseif ( is_string( $value ) ) {
 			$value = trim( $value );
 			$this->properties[$name] = htmlspecialchars( $value, ENT_NOQUOTES );
