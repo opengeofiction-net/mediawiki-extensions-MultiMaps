@@ -3,7 +3,7 @@ function OGFUtil(){
 var ogf = {
     config: {
         API_URL:        '//opengeofiction.net/',
-        TILES_URL:      '//wiki.opengeofiction.net/',
+        TILES_URL:      '//tile.opengeofiction.net/',
         TILESERVER_URL: '//tile.opengeofiction.net/',
         WIKI_URL:       '//wiki.opengeofiction.net/',
         NOMINATIM_URL:  'http://nominatim.opengeofiction.net:8080/',
@@ -56,7 +56,7 @@ ogf.baseMapsAvailable = {
 
 if( L ){
     for( var color in ogf.icons ){
-        ogf.icons[color] = L.icon( {iconUrl: ogf.config.TILES_URL + 'util/marker-'+ color +'.png', iconAnchor: [12,41]} );
+        ogf.icons[color] = L.icon( {iconUrl: ogf.config.WIKI_URL + 'util/marker-'+ color +'.png', iconAnchor: [12,41]} );
     }
 
     L.Control.InfoBox = L.Control.extend( {
@@ -441,7 +441,7 @@ ogf.drawLayerObject = function( obj, key, layer, map, controls ){
         if( ogf.icons[obj.icon] ){
             options.icon = ogf.icons[obj.icon];
         }else{
-			var iconOpt = {iconUrl: ogf.config.TILES_URL +'data/icons/'+ obj.icon};
+			var iconOpt = {iconUrl: ogf.config.WIKI_URL +'data/icons/'+ obj.icon};
 			if( obj.iconAnchor )  iconOpt.iconAnchor = obj.iconAnchor;
             options.icon = L.icon( iconOpt );
         }
