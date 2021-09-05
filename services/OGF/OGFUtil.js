@@ -988,7 +988,7 @@ function drawStations( rel, ctx, hInfo) {
 
 function loadRouteData( routeIds, cb ){
     query = routeIds.map( function(x){ return 'relation('+x+')'; } ).join(';');
-    query = '(' + query + '); (._;>>;);';
+    query = '(' + query + ';); (._;>>;);';
 //  console.log( "query <" + query + ">" );  // _DEBUG_
     ogf.getOverpassData( query, function(ctx){
         ctx = ogf.typeMap( ctx );
