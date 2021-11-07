@@ -931,14 +931,20 @@ ogf.publicTransport = function( layer, routeIds ){
     loadRouteData( routeIds, function(ctx){
         routeIds.forEach( function(relId){
             var rel = ctx.relation[relId];
-            drawRouteMasterLines( rel, ctx, hInfo );
+			if( rel ){
+				drawRouteMasterLines( rel, ctx, hInfo );
+			}
         } );
         routeIds.forEach( function(relId){
             var rel = ctx.relation[relId];
-            drawRouteMasterStations( rel, ctx, hInfo );
+			if( rel ){
+				drawRouteMasterStations( rel, ctx, hInfo );
+			}
         } );
     } );
 }
+
+77465,77576,76973
 
 function drawRouteMasterLines( rel, ctx, hInfo ){
     var routes   = rel.members.filter( function(x){ return x.type === 'relation' && (x.role === '' || x.role === 'route'); } );
