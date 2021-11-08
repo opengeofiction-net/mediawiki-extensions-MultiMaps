@@ -944,7 +944,6 @@ ogf.publicTransport = function( layer, routeIds ){
     } );
 }
 
-77465,77576,76973
 
 function drawRouteMasterLines( rel, ctx, hInfo ){
     var routes   = rel.members.filter( function(x){ return x.type === 'relation' && (x.role === '' || x.role === 'route'); } );
