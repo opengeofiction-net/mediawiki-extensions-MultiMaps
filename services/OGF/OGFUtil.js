@@ -22,13 +22,13 @@ var ogf = {
 ogf.baseMapsAvailable = {
     Standard: {
         ogf_shortcut: 'C',
-        tileUrl: ogf.config.TILES_URL +'/ogf-carto/{z}/{x}/{y}.png',
-        maxZoom: 19,
+        tileUrl: ogf.config.TILES_URL + 'ogf-carto/{z}/{x}/{y}.png',
+        maxZoom: 20,
         attribution: ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa,
     },
     TopoMap: {
         ogf_shortcut: 'T',
-        tileUrl: ogf.config.TILES_URL +'/ogf-topo/{z}/{x}/{y}.png',
+        tileUrl: ogf.config.TILES_URL + 'ogf-topo/{z}/{x}/{y}.png',
         maxZoom: 17,
         attribution: 'map data: ' + ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa +
             ' | map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> ' + ogf.linkText.cc_by_sa,
