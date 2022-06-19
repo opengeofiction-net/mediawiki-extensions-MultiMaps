@@ -23,7 +23,7 @@ ogf.baseMapsAvailable = {
     Standard: {
         ogf_shortcut: 'C',
         tileUrl: ogf.config.TILES_URL + 'ogf-carto/{z}/{x}/{y}.png',
-        maxZoom: 20,
+        maxZoom: 19,
         attribution: ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa,
     },
     TopoMap: {
@@ -45,6 +45,12 @@ ogf.baseMapsAvailable = {
         maxZoom: 17,
         attribution: 'map data: ' + ogf.linkText.osmCopy + ', <a href="http://viewfinderpanoramas.org/">SRTM</a>' +
             ' | map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> ' + ogf.linkText.cc_by_sa,
+    },{
+    Tiles05: {
+        ogf_shortcut: '5',
+        tileUrl: 'https://tiles05.opengeofiction.net/ogf-carto/{z}/{x}/{y}.png',
+        maxZoom: 19,
+        attribution: ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa,
     },
     None: {
         ogf_shortcut: 'N',
