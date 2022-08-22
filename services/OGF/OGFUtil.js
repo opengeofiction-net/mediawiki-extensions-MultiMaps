@@ -9,7 +9,7 @@ var ogf = {
         NOMINATIM_URL:  'http://nominatim.opengeofiction.net:8080/',
         ROUTING_URL:    'http://route.opengeofiction.net:5000/',
         TERRITORY_URL:  '//wiki.opengeofiction.net/wiki/index.php/OGF:Territory_administration?action=raw',
-        OVERPASS_URL:   '//osm3s.opengeofiction.net/api/interpreter',
+        OVERPASS_URL:   '//overpass.ogf.rent-a-planet.com/api/interpreter',
     },
     icons: { red: null, yellow: null, green: null, blue: null },
     linkText: {
