@@ -555,7 +555,7 @@ abstract class BaseMapService {
 	public function addDependencies( Parser &$parser ) {
 		$output = $parser->getOutput();
 		foreach ( $this->resourceModules as $modules ) {
-			$output->addModules( $modules );
+			$output->addModules( [ $modules ] );
 		}
 
 		if ( $this->headerItem != '' ) {
