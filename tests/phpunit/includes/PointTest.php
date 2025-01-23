@@ -29,28 +29,28 @@ class PointTest extends \PHPUnit\Framework\TestCase {
 	 * @covers MultiMaps\Point::__set
 	 */
 	public function test__set__get() {
-		$this->assertEquals( $this->object->lat, 123 );
-		$this->assertEquals( $this->object->lon, 321 );
+		$this->assertEquals( 123, $this->object->lat );
+		$this->assertEquals( 321, $this->object->lon );
 
-		$this->object->lat = "789";
+		$this->object->lat = '789';
 		$this->object->lon = 987;
 
-		$this->assertEquals( $this->object->lat, 789 );
-		$this->assertEquals( $this->object->lon, 987 );
+		$this->assertEquals( 789, $this->object->lat );
+		$this->assertEquals( 987, $this->object->lon );
 		$this->assertTrue( $this->object->isValid() );
 
-		$this->object->hello = "wassup!!!";
+		$this->object->hello = 'wassup!!!';
 		$this->assertNull( $this->object->hello );
 		$this->assertTrue( $this->object->isValid() );
 
-		$this->object->lat = "hello";
+		$this->object->lat = 'hello';
 		$this->assertFalse( $this->object->lat );
 		$this->assertFalse( $this->object->isValid() );
 
-		$this->object->lat = "789";
+		$this->object->lat = '789';
 		$this->assertTrue( $this->object->isValid() );
 
-		$this->object->lon = "hello";
+		$this->object->lon = 'hello';
 		$this->assertFalse( $this->object->lon );
 		$this->assertFalse( $this->object->isValid() );
 
@@ -64,10 +64,9 @@ class PointTest extends \PHPUnit\Framework\TestCase {
 	public function testMove() {
 		$this->object->move( 12345, -67890 );
 
-		$this->assertEquals(
-			$this->object->getData(),
-			[ 'lat' => 123.11108317216, 'lon' => 322.11643133104 ]
-		);
+		$coord = $this->object->getData();
+		$this->assertEqualsWithDelta( 123.11108317216, $coord['lat'], 0.00000000001 );
+		$this->assertEqualsWithDelta( 322.11643133104, $coord['lon'], 0.00000000001 );
 	}
 
 	/**
@@ -88,11 +87,11 @@ class PointTest extends \PHPUnit\Framework\TestCase {
 	public function testIsValidParse() {
 		$this->assertTrue( $this->object->isValid() );
 
-		$this->object->parse( "123456" );
+		$this->object->parse( '123456' );
 
 		$this->assertFalse( $this->object->isValid() );
 
-		$this->object->parse( "123,456" );
+		$this->object->parse( '123,456' );
 
 		$this->assertTrue( $this->object->isValid() );
 	}
@@ -102,8 +101,8 @@ class PointTest extends \PHPUnit\Framework\TestCase {
 	 */
 	public function testGetData() {
 		$this->assertEquals(
-			$this->object->getData(),
-			[ 'lat' => 123, 'lon' => 321 ]
+			[ 'lat' => 123, 'lon' => 321 ],
+			$this->object->getData()
 		);
 	}
 

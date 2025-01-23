@@ -23,13 +23,13 @@ class Yandex extends BaseMapService {
 
 	function __construct() {
 		parent::__construct();
-		$this->classname = "yandex";
+		$this->classname = 'yandex';
 		$this->resourceModules[] = 'ext.MultiMaps.Yandex';
 
 		$urlArgs = [];
 		$urlArgs['load'] = 'package.standard,package.geoObjects';
 		$urlArgs['lang'] = 'ru-RU';
-		$this->headerItem .= Html::linkedScript( '//api-maps.yandex.ru/2.0-stable/?' . wfArrayToCgi( $urlArgs ) ) . "\n";
+		$this->headerItem .= Html::linkedScript( 'https://api-maps.yandex.ru/2.0-stable/?' . wfArrayToCgi( $urlArgs ) ) . "\n";
 	}
 
 }

@@ -29,7 +29,7 @@ class Leaflet extends BaseMapService {
 
 		parent::__construct();
 
-		$this->classname = "leaflet";
+		$this->classname = 'leaflet';
 		$this->resourceModules[] = 'ext.MultiMaps.Leaflet';
 
 		$this->setLayerByKey( $layerKey );
@@ -58,7 +58,7 @@ class Leaflet extends BaseMapService {
 		}
 
 		// Default layer
-		$this->properties['tileLayer'] = '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		$this->properties['attribution'] = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+		$this->properties['tileLayer'] = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		$this->properties['attribution'] = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 	}
 }

@@ -1,6 +1,8 @@
 <?php
 namespace MultiMaps;
 
+use MediaWiki\MediaWikiServices;
+
 /**
  *
  *
@@ -27,7 +29,7 @@ class Geocoders {
 	}
 
 	private static function performRequest( $url, $urlArgs ) {
-		return \Http::get( $url . wfArrayToCgi( $urlArgs ) );
+		return MediaWikiServices::getInstance()->getHttpRequestFactory()->get( $url . wfArrayToCgi( $urlArgs ) );
 	}
 
 	private static function getCoordinatesUseGoogle( $address ) {
@@ -39,7 +41,7 @@ class Geocoders {
 			];
 		$response = self::performRequest( 'https://maps.googleapis.com/maps/api/geocode/json?', $urlArgs );
 
-		if ( $response !== false ) {
+		if ( $response !== null ) {
 			$data = \FormatJson::decode( $response );
 			if ( $data !== null ) {
 				if ( $data->status == 'OK' ) {
@@ -75,21 +77,21 @@ class Geocoders {
 			];
 		$response = self::performRequest( 'https://geocode-maps.yandex.ru/1.x/?', $urlArgs );
 
-		if ( $response !== false ) {
+		if ( $response !== null ) {
 			$data = \FormatJson::decode( $response );
 			if ( $data !== null ) {
 				$geoObjectCollection = $data->response->GeoObjectCollection;
 				if ( $geoObjectCollection->metaDataProperty->GeocoderResponseMetaData->found > 0 ) {
 					$geoObject = $geoObjectCollection->featureMember[0]->GeoObject;
-					list( $lon, $lat ) = explode( ' ', $geoObject->Point->pos );
+					[ $lon, $lat ] = explode( ' ', $geoObject->Point->pos );
 					$point = new Point( $lat, $lon );
 					if ( $point->isValid() ) {
 						$return = $point->pos;
 						$envelope = $geoObject->boundedBy->Envelope;
 						if ( $envelope !== null ) {
-							list( $lon, $lat ) = explode( ' ', $envelope->upperCorner );
+							[ $lon, $lat ] = explode( ' ', $envelope->upperCorner );
 							$bounds_ne = new Point( $lat, $lon );
-							list( $lon, $lat ) = explode( ' ', $envelope->lowerCorner );
+							[ $lon, $lat ] = explode( ' ', $envelope->lowerCorner );
 							$bounds_sw = new Point( $lat, $lon );
 							if ( $bounds_ne->isValid() && $bounds_sw->isValid() ) {
 								$b = new Bounds( [ $bounds_ne, $bounds_sw ] );
@@ -116,9 +118,9 @@ class Geocoders {
 		if ( $param_polygon ) {
 			$urlArgs['polygon'] = '1';
 		}
-		$response = self::performRequest( 'http://open.mapquestapi.com/nominatim/v1/search.php?', $urlArgs );
+		$response = self::performRequest( 'https://open.mapquestapi.com/nominatim/v1/search.php?', $urlArgs );
 
-		if ( $response !== false ) {
+		if ( $response !== null ) {
 			$data = \FormatJson::decode( $response );
 			if ( isset( $data[0] ) ) {
 				$data = $data[0];

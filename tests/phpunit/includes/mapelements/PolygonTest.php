@@ -27,11 +27,14 @@ class PolygonTest extends \PHPUnit\Framework\TestCase {
 	public function testGetElementName() {
 		// Remove the following lines when you implement this test.
 		$this->assertEquals(
-			$this->object->getElementName(),
-			'Polygon'
+			'Polygon',
+			$this->object->getElementName()
 		);
 	}
 
+	/**
+	 * @covers MultiMaps\Polygon::setProperty
+	 */
 	public function testSetProperty() {
 		$this->assertNull( $this->object->fill );
 
@@ -49,8 +52,8 @@ class PolygonTest extends \PHPUnit\Framework\TestCase {
 		$this->assertFalse( $this->object->setProperty( 'fill', $illegalfillvalue ) );
 
 		$this->assertEquals(
-			$this->object->getErrorMessages(),
-			[ \wfMessage( 'multimaps-element-illegal-value', 'fill', $illegalfillvalue, '"' . implode( '", "', $this->object->getPropertyValidValues( 'fill' ) ) . '"' )->escaped() ]
+			[ \wfMessage( 'multimaps-element-illegal-value', 'fill', $illegalfillvalue, '"' . implode( '", "', $this->object->getPropertyValidValues( 'fill' ) ) . '"' )->escaped() ],
+			$this->object->getErrorMessages()
 		);
 	}
 
