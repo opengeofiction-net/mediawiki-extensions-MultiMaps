@@ -439,6 +439,7 @@ ogf.drawLayerObject = function( obj, key, layer, map, controls ){
         var options = {
             color:  obj.color || '#111111',
             weight: ('weight' in obj) ? obj.weight : 1,
+            opacity: ('opacity' in obj) ? obj.opacity : 1,
         };
 //      L.polyline( coordList, options ).addTo( layer ).bindPopup( text, popupOptions );
         mapObj = L.polyline( coordList, options ).addTo( layer );
