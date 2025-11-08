@@ -58,7 +58,7 @@ ogf.baseMapsAvailable = {
         maxZoom: 19,
         attribution: ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa,
     },
-    CyclOGF {
+    CyclOGF: {
         ogf_shortcut: '6',
         tileUrl: 'https://tiles06.opengeofiction.net/cyclogf/{z}/{x}/{y}.png',
         maxZoom: 19,
