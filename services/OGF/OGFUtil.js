@@ -20,7 +20,7 @@ var ogf = {
     },
 };
 ogf.baseMapsAvailable = {
-    Standard: {
+    StandardOld: {
         ogf_shortcut: 'C',
         tileUrl: ogf.config.TILES_URL + 'ogf-carto/{z}/{x}/{y}.png',
         maxZoom: 19,
@@ -49,6 +49,18 @@ ogf.baseMapsAvailable = {
     Tiles05: {
         ogf_shortcut: '5',
         tileUrl: 'https://tiles05.opengeofiction.net/ogf-carto/{z}/{x}/{y}.png',
+        maxZoom: 19,
+        attribution: ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa,
+    },
+    Standard: {
+        ogf_shortcut: '5',
+        tileUrl: 'https://tiles05.opengeofiction.net/ogf-carto/{z}/{x}/{y}.png',
+        maxZoom: 19,
+        attribution: ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa,
+    },
+    CyclOGF: {
+        ogf_shortcut: '6',
+        tileUrl: 'https://tiles06.opengeofiction.net/cyclogf/{z}/{x}/{y}.png',
         maxZoom: 19,
         attribution: ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa,
     },
@@ -439,6 +451,7 @@ ogf.drawLayerObject = function( obj, key, layer, map, controls ){
         var options = {
             color:  obj.color || '#111111',
             weight: ('weight' in obj) ? obj.weight : 1,
+            opacity: ('opacity' in obj) ? obj.opacity : 1,
         };
 //      L.polyline( coordList, options ).addTo( layer ).bindPopup( text, popupOptions );
         mapObj = L.polyline( coordList, options ).addTo( layer );
