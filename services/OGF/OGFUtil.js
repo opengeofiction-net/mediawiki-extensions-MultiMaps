@@ -2,14 +2,14 @@ function OGFUtil(){
 
 var ogf = {
     config: {
-        API_URL:        '//opengeofiction.net/',
-        TILES_URL:      '//tile.opengeofiction.net/',
-        TILESERVER_URL: '//tile.opengeofiction.net/',
-        WIKI_URL:       '//wiki.opengeofiction.net/',
+        API_URL:        'https://opengeofiction.net/',
+        TILES_URL:      'https://tile.opengeofiction.net/',
+        TILESERVER_URL: 'https://tile.opengeofiction.net/',
+        WIKI_URL:       'https://wiki.opengeofiction.net/',
         NOMINATIM_URL:  'https://ogfnominatim-api.infinatio.us/',
         ROUTING_URL:    'https://ogfrouting-api.infinatio.us/',
-        TERRITORY_URL:  '//wiki.opengeofiction.net/index.php/OpenGeofiction:Territory_administration?action=raw',
-        OVERPASS_URL:   '//overpass.opengeofiction.net/api/interpreter',
+        TERRITORY_URL:  'https://wiki.opengeofiction.net/index.php/OpenGeofiction:Territory_administration?action=raw',
+        OVERPASS_URL:   'https://overpass.opengeofiction.net/api/interpreter',
     },
     icons: { red: null, yellow: null, green: null, blue: null },
     linkText: {
@@ -561,7 +561,7 @@ ogf.parseUrlParam = function( str ){
 ogf.parseLocation = function( str ){
     var dsc = str.split('/');
     var hInfo = {};
-    if( dsc[0].match(/^[A-Z]/) ){
+    if( dsc[0].match(/^([0-9A-Z]|[A-Z]{3})$/) ){
         hInfo.layer = dsc.shift();
     }
     hInfo.zoom = parseFloat(dsc[0]);
