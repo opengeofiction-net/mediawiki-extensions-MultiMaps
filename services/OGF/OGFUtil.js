@@ -28,10 +28,10 @@ ogf.baseMapsAvailable = {
     },
     TopoMap: {
         ogf_shortcut: 'T',
-        tileUrl: ogf.config.TILES_URL + 'ogf-topo/{z}/{x}/{y}.png',
+        tileUrl: ogf.config.TILES_URL + 'ttopo/{z}/{x}/{y}.png',
         maxZoom: 17,
         attribution: 'map data: ' + ogf.linkText.ogfCopy + ' ' + ogf.linkText.cc_by_nc_sa +
-            ' | map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> ' + ogf.linkText.cc_by_sa,
+            ' | map style: &copy; <a href="https://github.com/opengeofiction-net/tracestrack-topo-map">Tracestrack Topo</a> ' + ogf.linkText.cc_by_sa,
     },
     OpenStreetMap: {
         ogf_shortcut: 'OSM',
